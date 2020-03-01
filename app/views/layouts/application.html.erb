@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewBookers</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+     <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+      <nav class="nav navbar-nav navbar-left">
+        <p class="header-headline">Bookers</p>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+          <li><%= link_to user_path(current_user.id) do %>
+            <span class="glyphicon glyphicon-home small" aria-hidden="true"> Home</span>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to ("/users") do %>
+            <span class="glyphicon glyphicon-user small" aria-hidden="true"> Users</span>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to ("/books") do %>
+            <span class="glyphicon glyphicon-book small" aria-hidden="true"> Books</span>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-new-window small" aria-hidden="true"> logout</span>
+          <% end %>
+           </li>
+          <% else %>
+          <li>
+          <%= link_to ("/") do %>
+            <span class="glyphicon glyphicon-home small" aria-hidden="true"> Home</span>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to ("/home/about") do %>
+            <span class="glyphicon glyphicon-link small" aria-hidden="true"> About</span>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to ("/users/sign_up") do %>
+            <span class="glyphicon glyphicon-new-window small" aria-hidden="true"> sign up</span>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to ("/users/sign_in") do %>
+            <span class="glyphicon glyphicon-log-out small" aria-hidden="true"> login</span>
+          <% end %>
+          </li>
+          <% end %>
+
+        </ul>
+      </nav>
+    </div>
+     </header>
+    <%= yield %>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-9">
+            <span>CopyRight Infratop.inc</span>
+          </div>
+        </div>
+      </div>
+
+
+  </body>
+</html>

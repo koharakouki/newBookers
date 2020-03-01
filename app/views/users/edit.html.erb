@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+
+<h2>User info</h2>
+
+<%= form_for(@user) do |f| %>
+
+<% if @user.errors.any? %>
+      <h2><%= @user.errors.count %>件のerror</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  <% end %>
+  	<div class="form-group">
+	<label>Name</label>
+	<%= f.text_field :name %>
+	</div>
+	<div class="form-group">
+	<label>Image</label>
+	<%= f.attachment_field :profile_image %>
+	</div>
+	<div class="form-group">
+	<label>Introduction</label>
+	<%= f.text_area :introduction %>
+	</div>
+	<%= f.submit "Update User" %>
+<% end %>
+
+
+</div>
+</div>
